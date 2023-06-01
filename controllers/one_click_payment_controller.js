@@ -33,8 +33,6 @@ const oneClickPaymentController = async (req, res)  =>  {
   
     try {
       const result = await sendRequest(options, data);
-      // console.log(result);
-      // console.log(localCard.cardBrand);
       res.render('one_click_payment_view', { result, paymentMethod:localCard.cardBrand });
     } catch (error) {
       res.status(500).json({ error: error.message });

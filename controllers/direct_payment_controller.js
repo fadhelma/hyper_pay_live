@@ -32,7 +32,6 @@ const directPaymentController = async (req, res)  =>  {
   
     try {
       const result = await sendRequest(options, data);
-      // console.log(result);
       res.render('selected_method_view', { result, paymentMethod });
     } catch (error) {
       res.status(500).json({ error: error.message });
