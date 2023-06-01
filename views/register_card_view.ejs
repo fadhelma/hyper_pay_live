@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register Card</title>
+</head>
+<style>
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+</style>
+<body>
+  <% if (paymentMethod === "mada") { %>
+    <h2>Register a new Mada Card</h2>
+    <% } else { %>
+      <h2>Register a new Credit Card</h2>
+      <% } %>
+  <script async src="http://<%= process.env.API %>/v1/paymentWidgets.js?checkoutId=<%= result.id %>"></script>
+
+  <% if (paymentMethod === "mada") { %>
+    <form action="/register-status/<%= result.id %>/mada" class="paymentWidgets" data-brands="MADA"></form>
+  <% } else { %>
+    <form action="/register-status/<%= result.id %>/credit" class="paymentWidgets" data-brands="VISA MASTER"></form>
+  <% } %>
+</body>
+</html>

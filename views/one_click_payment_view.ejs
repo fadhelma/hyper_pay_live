@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Direct Payment Page</title>
+</head>
+<style>
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+</style>
+<script>
+    console.log('<%= process.env.API %>');
+</script>
+<body>
+  <% if (paymentMethod === "mada") { %>
+    <h2>Pay by Mada Card (1.00) SAR</h2>
+    <% } else { %>
+    <h2>Pay by Credit Card (1.00) SAR</h2>
+    <% } %>
+  <script async src="http://<%= process.env.API %>/v1/paymentWidgets.js?checkoutId=<%= result.id %>"></script>
+
+  <% if (paymentMethod === "mada") { %>
+    <form action="/payment-status/<%= result.id %>/mada" class="paymentWidgets">MADA</form>
+  <% } else { %>
+    <form action="/payment-status/<%= result.id %>/credit" class="paymentWidgets">VISA MASTER</form>
+    <!-- <form action="/payment-status/<%= result.id %>/credit" class="paymentWidgets" data-brands="VISA MASTER"></form> -->
+  <% } %>
+</body>
+</html>
