@@ -2,27 +2,16 @@
 <html>
 <head>
   <title>Result Payment Page</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
-<style>
-html, body {
-    height: 100%;
-}
-
-html {
-    display: table;
-    margin: auto;
-}
-
-body {
-    display: table-cell;
-    vertical-align: middle;
-}
-</style>
 <body>
   <% if (result.result.code.match(/^(000\.000\.|000\.100\.1|000\.[36]|000\.400\.[1][12]0)/) || result.result.code.match(/^(000\.400\.0[^3]|000\.400\.100)/)) { %>
     <img style="width: 180px" src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678134-sign-check-512.png" alt="Check icon"/>
   <% } else { %>
     <img style="width: 180px"src="https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Close-512.png" alt="Check icon"/>
   <% } %>
+  <a href="/">
+    <button style="margin-top: 20px; margin-left: 20px;" class="custom-button">Back to Home</button>
+  </a>
 </body>
 </html>

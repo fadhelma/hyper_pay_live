@@ -3,6 +3,7 @@ const app = express();
 app.use(express.json());
 const bodyParser = require('body-parser');
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
 const cors = require('cors');
 // Enable CORS middleware
