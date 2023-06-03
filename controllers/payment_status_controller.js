@@ -5,7 +5,7 @@ require('dotenv').config();
 const entityIds = process.env.ENTITY_IDS.split(", ");
 const accessToken = process.env.ACCESS_TOKEN;
 const api = process.env.API;
-
+ 
 const paymentStatusController = (req, res) => {
 
   const checkoutId = req.params.checkoutId;
@@ -33,13 +33,6 @@ const paymentStatusController = (req, res) => {
     response.on('end', () => {
       try {
         const result = JSON.parse(data);
-//         console.log(result.result.parameterErrors);
-//         const parameterErrors = result.result.parameterErrors;
-
-// parameterErrors.forEach((error) => {
-//   console.log('Error message:', error.message);
-// });
-console.log(result);
         res.render('result_view', { result });
         // res.status(200).json(result);
       } catch (error) {

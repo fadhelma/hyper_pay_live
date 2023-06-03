@@ -15,7 +15,7 @@ const registerStatusController = (req, res) => {
 
   const path = `/v1/checkouts/${checkoutId}/registration`;
   const query = querystring.stringify({
-    entityId: paymentMethod == 'MADA' || paymentMethod == 'mada' ? entityIds[0] : entityIds[1]
+    entityId: paymentMethod == 'mada' ? entityIds[0] : entityIds[1]
   });
   const options = {
     port: 443,
@@ -35,7 +35,7 @@ const registerStatusController = (req, res) => {
     response.on('end', () => {
       try {
         const result = JSON.parse(data);
-        console.log(result);
+  
         store.set('card', {cardId: result.id, cardBrand: result.paymentBrand == "MADA"? "mada" :result.paymentBrand });
 
         res.render('result_view', { result });

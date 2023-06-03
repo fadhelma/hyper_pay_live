@@ -3,7 +3,7 @@ require('dotenv').config();
 const sendRequest = require('../utils/send_request');
 const store = require('store');
 
-const entityIds = process.env.ENTITY_IDS_TOKEN_PAYMENT.split(", ");
+const entityIds = process.env.ENTITY_IDS.split(", ");
 const accessToken = process.env.ACCESS_TOKEN;
 const api = process.env.API;
 
@@ -14,8 +14,8 @@ const oneClickPaymentController = async (req, res)  =>  {
     const data = querystring.stringify({
       'entityId': localCard.cardBrand == "mada" ? entityIds[0] : entityIds[1],
       'amount':'1.00',
-      'currency':'SAR',
-      'paymentType':'DB',
+      'currency': 'SAR',
+      'paymentType': 'DB',
       'registrations[0].id':localCard.cardId
     });
   

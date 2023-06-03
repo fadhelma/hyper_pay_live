@@ -20,15 +20,16 @@ body {
 }
 
 </style>
-<script>
-    console.log('<%= process.env.API %>');
-</script>
+
 <body>
   <% if (paymentMethod === "mada") { %>
     <h2>Pay by Mada Card (1.00) SAR</h2>
     <% } else { %>
     <h2>Pay by Credit Card (1.00) SAR</h2>
     <% } %>
+    <script>
+      var wpwlOptions = {    registrations: {        requireCvv: true,        hideInitialPaymentForms: true    }}
+    </script>
   <script async src="http://<%= process.env.API %>/v1/paymentWidgets.js?checkoutId=<%= result.id %>"></script>
 
   <% if (paymentMethod === "mada") { %>
